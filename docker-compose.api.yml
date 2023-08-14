@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+    boca-adminer:
+        image: adminer:latest
+        environment:
+            - ADMINER_DEFAULT_SERVER=boca-db
+        ports:
+            - 8080:8080
+     
+    boca-api:
+        image: ${USER}/boca-api:latest
+        build: 
+            context: .
+            dockerfile: docker/dev/api/Dockerfile
+        ports:
+            - 49160:8080
